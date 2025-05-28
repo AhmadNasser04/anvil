@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-
       - name: Create Release
         uses: actions/create-release@v1
         env:
