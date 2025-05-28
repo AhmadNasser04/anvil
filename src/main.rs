@@ -30,7 +30,6 @@ pub enum Commands {
         #[command(subcommand)]
         action: PluginAction
     },
-    List,
     Start {
         name: String,
         #[arg(short, long, default_value = "2")]
@@ -44,6 +43,7 @@ pub enum Commands {
         #[arg(short, long, default_value = "false")]
         force: bool,
     },
+    List,
     Version
 }
 
@@ -71,9 +71,6 @@ async fn main() -> anyhow::Result<()> {
         Commands::Plugin { server, action } => {
             plugin::handle_plugin_action(&server, action).await?;
         }
-        Commands::List => {
-            server::list_servers().await?;
-        }
         Commands::Start { name, ram } => {
             server::start_server(&name, ram).await?;
         }
@@ -82,6 +79,9 @@ async fn main() -> anyhow::Result<()> {
         }
         Commands::Delete { name, force } => {
             server::delete_server(&name, force).await?;
+        }
+        Commands::List => {
+            server::list_servers().await?;
         }
         Commands::Version => {
             println!("anvil v{}", env!("CARGO_PKG_VERSION"));
