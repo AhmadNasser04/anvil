@@ -1,20 +1,24 @@
-name: Publish to crates.io
+name: Release
 on:
   push:
     tags:
       - "v*"
+permissions:
+  contents: write
 jobs:
-  publish:
-    name: Publish
+  create-release:
+    name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-      - name: Install stable toolchain
-        uses: dtolnay/rust-toolchain@stable
-      - name: Run cargo check
-        run: cargo check
-      - name: Run tests
-        run: cargo test
-      - name: Publish to crates.io
-        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
