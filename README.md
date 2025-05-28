@@ -18,9 +18,7 @@ Install Anvil using Cargo:
 cargo install anvil-mc
 ```
 
-## Quick Start Guide
-
-Commands:
+### Commands:
 
 - create
 - plugin
