@@ -1,6 +1,6 @@
 [package]
 name = "anvil"
-version = "0.1.0"
+version = "1.0.0"
 description = "A CLI tool to create and manager minecraft servers on the fly."
 authors = ["justpandaz"]
 license = "MIT"
@@ -20,6 +20,6 @@ indicatif = "0.17"
 dialoguer = "0.11"
 dirs = "6.0.0"
 futures-util = "0.3.31"
-sha1 = "0.11.0-pre.5"
+sha1 = "0.10.6"
 hex = "0.4.3"
 urlencoding = "2.1.3"
