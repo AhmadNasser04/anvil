@@ -2,8 +2,6 @@ mod server;
 mod api;
 mod plugin;
 
-extern crate core;
-
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
